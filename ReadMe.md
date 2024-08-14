@@ -17,7 +17,7 @@ JWT_EXPIRES_IN = '90d'; # expiration date
 JWT_COOKIE_EXPIRES_IN = 90; # cookie expiration date matching JWT expiration date
 NODE_ENV = 'development'; # current envirionment
 
-DATABASE_URI = 'mongodb://localhost:27017/simpleBlogApi'; # Database URI for mongodb
+DATABASE_URI = 'mongodb://localhost:27017/simpleBlogApi'; # Database URI for mongodb, this placeholder is for if mongodb is hosted locally
 DATABASE_PASSWORD = ''; # Database Password which replaces the '<password>' placeholder in the URI
 ```
 
