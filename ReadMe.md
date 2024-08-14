@@ -22,6 +22,7 @@ DATABASE_PASSWORD = ''; # Database Password which replaces the '<password>' plac
 ```
 
 - use the command `npm start` to begin running your api! The default URL will be http://localhost:(PORT number in ENV file, or 4000 by default)
+- To use the `/createAuthor` function for creating a new author, you will have to remove the `(protectRoute, )` function on _line 14_ to create an initial user.
 
 ## Basic endpoints (no auth required)
 
