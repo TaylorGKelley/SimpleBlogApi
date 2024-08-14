@@ -2,6 +2,25 @@
 
 The goal of this API is to serve as a interface to manage your blog's database. It has a few endpoints to do so.
 
+## Initialize the project
+
+To properly configure this project to run on your machine, follow the following steps.
+
+- clone this repo
+- run `npm i` to install all node packages
+- create a `config.env` file that looks like so:
+
+```js
+PORT = 4000;
+JWT_SECRET = 'random key for jwt secret'; // be sure it is long and hard to guess
+JWT_EXPIRES_IN = '90d'; // expiration date
+JWT_COOKIE_EXPIRES_IN = 90; // cookie expiration date matching JWT expiration date
+NODE_ENV = 'development'; // current envirionment
+
+DATABASE_URI = 'mongodb://localhost:27017/simpleBlogApi'; // Database URI for mongodb
+DATABASE_PASSWORD = ''; // Database Password which replaces the '<password>' placeholder in the URI
+```
+
 ## Basic endpoints (no auth required)
 
 ### Get All Posts
@@ -42,7 +61,6 @@ This endpoint can be accessed at the route `/api/v1/admin/signin` and should hav
 }
 ```
 
-> [!info]
 > This is just a sample user
 
 ### Sign Out
