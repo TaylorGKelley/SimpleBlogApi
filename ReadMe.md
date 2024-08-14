@@ -10,16 +10,18 @@ To properly configure this project to run on your machine, follow the following 
 - run `npm i` to install all node packages
 - create a `config.env` file that looks like so:
 
-```js
+```bash
 PORT = 4000;
-JWT_SECRET = 'random key for jwt secret'; // be sure it is long and hard to guess
-JWT_EXPIRES_IN = '90d'; // expiration date
-JWT_COOKIE_EXPIRES_IN = 90; // cookie expiration date matching JWT expiration date
-NODE_ENV = 'development'; // current envirionment
+JWT_SECRET = 'random key for jwt secret'; # be sure it is long and hard to guess
+JWT_EXPIRES_IN = '90d'; # expiration date
+JWT_COOKIE_EXPIRES_IN = 90; # cookie expiration date matching JWT expiration date
+NODE_ENV = 'development'; # current envirionment
 
-DATABASE_URI = 'mongodb://localhost:27017/simpleBlogApi'; // Database URI for mongodb
-DATABASE_PASSWORD = ''; // Database Password which replaces the '<password>' placeholder in the URI
+DATABASE_URI = 'mongodb://localhost:27017/simpleBlogApi'; # Database URI for mongodb
+DATABASE_PASSWORD = ''; # Database Password which replaces the '<password>' placeholder in the URI
 ```
+
+- use the command `npm start` to begin running your api! The default URL will be http://localhost:(PORT number in ENV file, or 4000 by default)
 
 ## Basic endpoints (no auth required)
 
