@@ -49,7 +49,7 @@ export const protectRoute = async (req, res, next) => {
   if (currentAuthor.changedPasswordAfter(decoded.iat)) {
     return res
       .status(401)
-      .status('User recently changed password. Please login again.');
+      .send('User recently changed password. Please login again.');
   }
 
   req.user = currentAuthor;
