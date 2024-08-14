@@ -42,8 +42,8 @@ This endpoint can be accessed at the route `/api/v1/admin/signin` and should hav
 }
 ```
 
--> [!info]
--> This is just a sample user
+> [!info]
+> This is just a sample user
 
 ### Sign Out
 
