@@ -76,10 +76,14 @@ export const createPost = async (req, res) => {
 
 export const updatePost = async (req, res) => {
   try {
-    const post = await Post.findByIdAndUpdate(req.params.id, req.body, {
-      new: true,
-      runValidators: true,
-    });
+    const post = await Post.findByIdAndUpdate(
+      req.params.id,
+      { ...req.body, updatedDate: Date.now() },
+      {
+        new: true,
+        runValidators: true,
+      }
+    );
 
     res.status(200).json({
       status: 'success',

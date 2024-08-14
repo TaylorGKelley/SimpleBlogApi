@@ -4,6 +4,7 @@ const postSchema = new Schema({
   title: { type: String, required: true },
   tags: [String],
   createdDate: { type: Date, default: Date.now() },
+  updatedDate: { type: Date },
   body: [
     {
       attribute: { type: String, enum: ['h1', 'h2', 'h3', 'p', 'code', 'img'] },
