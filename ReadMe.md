@@ -26,7 +26,7 @@ DATABASE_PASSWORD = ''; # Database Password which replaces the '<password>' plac
 
 ## Basic endpoints (no auth required)
 
-### Get All Posts
+### Get All Posts (get)
 
 This endpoint can be accessed at the route `/api/v1/posts` and returns all the post data.
 It has the following parameters that can be passed in to filter/sort
@@ -49,11 +49,11 @@ Filtering fields:
 - _field-name(optionally use: [gte]/[lte]/[lt]/[gt] for number values, greater than/less than or equal too)_ (string/number, example: _/?likes[gte]=3&commentsTotal[lt]=10_)
   (_As a note, the fields likes/comments do not exist in the current api version_)
 
-### Get a Single Post
+### Get a Single Post (get)
 
 This endpoint can be accessed at the route `/api/v1/posts/::POSTID` and returns the post with a matching Post Id.
 
-### Sign In
+### Sign In (post)
 
 This endpoint can be accessed at the route `/api/v1/admin/signin` and should have a request body of the following.
 
@@ -66,13 +66,29 @@ This endpoint can be accessed at the route `/api/v1/admin/signin` and should hav
 
 > This is just a sample user
 
-### Sign Out
+### Sign Out (post)
 
 This endpoint can be accessed at the route `/api/v1/admin/signout`.
 
 ## Authenticated Endpoints (auth required)
 
-### Create a Post
+### Check if User/Author is Logged In (get)
+
+This endpoint can be accessed at the route `/api/v1/isLoggedIn`.
+It returns an object of:
+
+```json
+"data": {
+  "isAuthenticated": true,
+  "user": {
+    "fullName": "first last",
+    "email": "john.doe@example.com",
+    "photo": "photoBase64String"
+  }
+}
+```
+
+### Create a Post (post)
 
 This endpoint can be accessed at the route `/api/v1/posts` and should have a request body of the following.
 
@@ -89,7 +105,7 @@ This endpoint can be accessed at the route `/api/v1/posts` and should have a req
 }
 ```
 
-### Update a Post
+### Update a Post (patch)
 
 This endpoint can be accessed at the route `/api/v1/posts` and should have a request body with at least one field to update.
 (_example:_)
@@ -100,11 +116,11 @@ This endpoint can be accessed at the route `/api/v1/posts` and should have a req
 }
 ```
 
-### Delete a Post
+### Delete a Post (delete)
 
 This endpoint can be accessed at the route `/api/v1/posts/::POSTID` and deletes the post with a matching Post Id, returning `null` in the data field.
 
-### Create Author
+### Create Author (post)
 
 As a temporary route, you can create an author if you are signed in to an author account. This may be changed in the future
 Route `/api/v1/admin/createAuthor`

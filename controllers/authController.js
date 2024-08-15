@@ -83,6 +83,31 @@ export const signout = async (req, res) => {
   });
 };
 
+export const getLoggedInUser = async (req, res) => {
+  try {
+    const signedInUser = Author.findById(req.user._id);
+
+    const user = {
+      fullName: `${signedInUser.firstName} ${signedInUser.lastName}`,
+      email: signedInUser.email,
+      photo: signedInUser.photo,
+    };
+
+    res.status(200).json({
+      status: 'success',
+      data: {
+        isAuthenticated: true,
+        user,
+      },
+    });
+  } catch (error) {
+    res.status(500).json({
+      status: 'fail',
+      message: error.message,
+    });
+  }
+};
+
 export const createAuthor = async (req, res) => {
   try {
     const newAuthor = await Author.create({
@@ -110,22 +135,22 @@ export const createAuthor = async (req, res) => {
 };
 
 // Configure Authorization for this before enabling
-export const deleteAuthor = async (req, res) => {
-  try {
-    const deletedAuthor = await Author.findByIdAndDelete(req.params.id);
+// export const deleteAuthor = async (req, res) => {
+//   try {
+//     const deletedAuthor = await Author.findByIdAndDelete(req.params.id);
 
-    if (deletedAuthor) {
-      res.status(200).json({
-        status: 'success',
-        data: null,
-      });
-    } else {
-      throw new Error('Can not find Author with that Id');
-    }
-  } catch (error) {
-    res.status(500).json({
-      status: 'fail',
-      message: error.message,
-    });
-  }
-};
+//     if (deletedAuthor) {
+//       res.status(200).json({
+//         status: 'success',
+//         data: null,
+//       });
+//     } else {
+//       throw new Error('Can not find Author with that Id');
+//     }
+//   } catch (error) {
+//     res.status(500).json({
+//       status: 'fail',
+//       message: error.message,
+//     });
+//   }
+// };
